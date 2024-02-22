@@ -1,0 +1,27 @@
+package templates
+
+templ Index() {
+	<div>
+		<h1>CRUD Example</h1>
+		<form
+			hx-post="/items"
+			hx-target="#item-list"
+			hx-swap="afterbegin"
+			hx-on::after-request="this.reset()"
+			style="display: flex; align-items: center;"
+		>
+			<input
+				type="text"
+				name="description"
+				placeholder="description..."
+				required
+				style="flex-grow: 1; margin-right: 8px; width: auto;"
+			/>
+			<button
+				type="submit"
+				style="line-height: 1.2; margin-bottom: 1.6rem"
+			>ADD</button>
+		</form>
+		<ul id="item-list"></ul>
+	</div>
+}

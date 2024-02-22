@@ -1,0 +1,13 @@
+package templates
+
+import "htmx_experiments/types"
+import "fmt"
+
+templ ItemEdit(item types.Item) {
+	<li>
+		<form hx-put={ fmt.Sprintf("/items/%d", item.Id) } hx-target="closest li" hx-swap="outerHTML">
+			<input type="text" name="description" value={ item.Description }/>
+			<button type="submit">Save</button>
+		</form>
+	</li>
+}

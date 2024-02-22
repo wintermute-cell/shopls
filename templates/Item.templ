@@ -1,0 +1,23 @@
+package templates
+
+import "htmx_experiments/types"
+import "fmt"
+
+templ Item(item types.Item) {
+	<li>
+		<h3>{ item.Description }</h3>
+		<button
+			name="description"
+			value={ item.Description }
+            hx-vals={fmt.Sprintf("{ \"id\": \"%d\" }", item.Id)}
+			hx-post="/items/editor"
+			hx-target="closest li"
+			hx-swap="outerHTML"
+		>EDIT</button>
+		<button
+			hx-delete={ fmt.Sprintf("/items/%d", item.Id) }
+            hx-target="closest li"
+            hx-swap="outerHTML"
+		>DELETE</button>
+	</li>
+}

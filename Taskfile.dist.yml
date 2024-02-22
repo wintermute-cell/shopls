@@ -1,0 +1,23 @@
+version: '3'
+
+env:
+    OUTFILE: server
+
+tasks:
+  templ:
+    cmds:
+      - templ generate
+
+  build:
+    cmds:
+      - go build -o "$OUTFILE"
+
+  run:
+    cmds:
+      - ./"$OUTFILE"
+
+  dev:
+    cmds:
+      - task: templ
+      - task: build
+      - task: run

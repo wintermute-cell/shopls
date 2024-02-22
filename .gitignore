@@ -1,5 +1,12 @@
+# Rendered templates
 templates/*.go
+
+# Executables
 server
+
+# Local user specific build files
+Taskfile.yml
+taskfile.yml
 
 
 

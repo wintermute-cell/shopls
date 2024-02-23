@@ -131,6 +131,13 @@ func handleItemsEditor(w http.ResponseWriter, r *http.Request) {
 	component.Render(r.Context(), w)
 }
 
+func logMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		logging.Info("%s %s %s", r.RemoteAddr, r.Method, r.URL)
+		next.ServeHTTP(w, r)
+	})
+}
+
 func main() {
 	// LOGGING
 	logging.Init("", true)
@@ -148,6 +155,7 @@ func main() {
 
 	// HANDLERS
 	r := chi.NewRouter()
+	r.Use(logMiddleware)
 	r.Get("/", handleIndex)
 	r.Get("/items", handleItemsGet)
 	r.Post("/items", handleItemsPost)

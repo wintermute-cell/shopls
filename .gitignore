@@ -1,8 +1,9 @@
 # Rendered templates
 templates/*.go
 
-# Executables
+# Executables and Database
 server
+data.db
 
 # Local user specific build files
 Taskfile.yml

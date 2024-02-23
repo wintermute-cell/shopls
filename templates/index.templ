@@ -22,6 +22,6 @@ templ Index() {
 				style="line-height: 1.2; margin-bottom: 1.6rem"
 			>ADD</button>
 		</form>
-		<ul id="item-list"></ul>
+		<ul id="item-list" hx-get="/items" hx-trigger="load"></ul>
 	</div>
 }

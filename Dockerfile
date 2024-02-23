@@ -2,6 +2,9 @@
 # This is based on Debian and sets the GOPATH environment variable at /go.
 FROM golang:1.22 as builder
 
+# Install templ to generate the templates
+RUN go install github.com/a-h/templ/cmd/templ@v0.2.543
+
 # Create and change to the app directory.
 WORKDIR /app
 
@@ -10,10 +13,11 @@ COPY go.mod go.sum ./
 COPY *.go ./
 COPY logging/ logging/
 COPY types/ types/
-COPY templates/ templates/
+COPY templates/*.templ templates/
 
 # Fetch dependencies.
 RUN go mod download
+RUN templ generate
 
 # Build the binary.
 RUN go build -v -o server

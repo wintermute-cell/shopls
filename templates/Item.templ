@@ -1,6 +1,6 @@
 package templates
 
-import "htmx_experiments/types"
+import "shopls/types"
 import "fmt"
 
 templ Item(item types.Item) {
@@ -9,15 +9,15 @@ templ Item(item types.Item) {
 		<button
 			name="description"
 			value={ item.Description }
-            hx-vals={fmt.Sprintf("{ \"id\": \"%d\" }", item.Id)}
+			hx-vals={ fmt.Sprintf("{ \"id\": \"%d\" }", item.Id) }
 			hx-post="/items/editor"
 			hx-target="closest li"
 			hx-swap="outerHTML"
 		>EDIT</button>
 		<button
 			hx-delete={ fmt.Sprintf("/items/%d", item.Id) }
-            hx-target="closest li"
-            hx-swap="outerHTML"
+			hx-target="closest li"
+			hx-swap="outerHTML"
 		>DELETE</button>
 	</li>
 }

@@ -1,4 +1,4 @@
-module htmx_experiments
+module shopls
 
 go 1.22
 

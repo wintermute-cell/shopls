@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"htmx_experiments/logging"
-	"htmx_experiments/templates"
-	"htmx_experiments/types"
+	"shopls/logging"
+	"shopls/templates"
+	"shopls/types"
 
 	"github.com/go-chi/chi/v5"
 
@@ -16,7 +16,7 @@ import (
 )
 
 // CONFIG
-var DEFAULT_TITLE = "CRUD Example"
+var DEFAULT_TITLE = "shop-ls"
 var PORT = ":8080"
 
 // GLOBAL STATE
